@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#ver 1.2
+#ver 1.0
 
 wget --no-check-certificate -c --tries=0 -P /tmp/etc/smartdns https://anti-ad.net/anti-ad-for-smartdns.conf
 wget --no-check-certificate -c --tries=0 https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts -O /tmp/etc/smartdns/hosts_jdlingyu
