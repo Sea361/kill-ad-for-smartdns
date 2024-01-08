@@ -21,7 +21,7 @@ rm /tmp/etc/smartdns/kill-ad-for-smartdns.conf
 sort -n /tmp/etc/smartdns/hosts | uniq >> /tmp/etc/smartdns/kill-ad-for-smartdns.conf.bak
 sed -i '1 iaddress /time.android.com/111.230.50.201' /tmp/etc/smartdns/kill-ad-for-smartdns.conf.bak
 grep -vE '/360\.cn|www\.360\.cn' /tmp/etc/smartdns/kill-ad-for-smartdns.conf.bak > /tmp/etc/smartdns/kill-ad-for-smartdns.conf
-sed -i '/livew.l.qq.com/d; /t7z.cupid.iqiyi.com/d; /wxsnsdy.wxs.qq.com/d' /etc/smartdns/smartdns-171.101.0.1.conf
+sed -i '/livew.l.qq.com/d; /t7z.cupid.iqiyi.com/d; /wxsnsdy.wxs.qq.com/d' /tmp/etc/smartdns/kill-ad-for-smartdns.conf
 ln -s /tmp/etc/smartdns/kill-ad-for-smartdns.conf /etc/smartdns/address.conf
 ln -s /tmp/etc/smartdns/ /tmp/upload/
 
