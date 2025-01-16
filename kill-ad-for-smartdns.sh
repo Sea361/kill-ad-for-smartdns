@@ -1,6 +1,15 @@
 #!/bin/sh
 
-#ver 1.0
+# ver 1.1
+
+# 判断文件是否大于2MB，大于则退出脚本
+if [ -f /tmp/etc/smartdns/kill-ad-for-smartdns.conf ]; then
+  filesize=$(du -k /tmp/etc/smartdns/kill-ad-for-smartdns.conf | awk '{print $1}')
+  if [ "$filesize" -gt 2048 ]; then
+    echo "文件超过2MB，退出脚本。"
+    exit 0
+  fi
+fi
 
 wget --no-check-certificate -c --tries=0 -P /tmp/etc/smartdns https://anti-ad.net/anti-ad-for-smartdns.conf
 wget --no-check-certificate -c --tries=0 https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts -O /tmp/etc/smartdns/hosts_jdlingyu
@@ -14,7 +23,7 @@ cat /tmp/etc/smartdns/hosts_Goooler >> /tmp/etc/smartdns/hosts_temp
 sed -i 's/\r//' /tmp/etc/smartdns/hosts_temp
 grep "^127" /tmp/etc/smartdns/hosts_temp > /tmp/etc/smartdns/hosts.temp
 sed -i 's/127.0.0.1 /address \//g;s/$/&\/#/g' /tmp/etc/smartdns/hosts.temp
-cat /tmp/etc/smartdns/anti-ad-for-smartdns.conf >>  /tmp/etc/smartdns/hosts.temp
+cat /tmp/etc/smartdns/anti-ad-for-smartdns.conf >> /tmp/etc/smartdns/hosts.temp
 grep "^address" /tmp/etc/smartdns/hosts.temp > /tmp/etc/smartdns/hosts
 rm /etc/smartdns/address.conf
 rm /tmp/etc/smartdns/kill-ad-for-smartdns.conf
