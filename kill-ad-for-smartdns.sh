@@ -5,8 +5,8 @@
 # 判断文件是否大于2MB，大于则退出脚本
 if [ -f /tmp/etc/smartdns/kill-ad-for-smartdns.conf ]; then
   filesize=$(du -k /tmp/etc/smartdns/kill-ad-for-smartdns.conf | awk '{print $1}')
-  if [ "$filesize" -gt 2048 ]; then
-    echo "文件超过2MB，退出脚本。"
+  if [ "$filesize" -gt 2151 ]; then
+    echo "文件超过2.1MB，退出脚本。"
     exit 0
   fi
 fi
